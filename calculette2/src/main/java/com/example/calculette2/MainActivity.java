@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView txtResultat;
     private Double nombre1,nombre2;
     private String operateur,chaine;
+    private boolean trouver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nombre1 = 0.0;
         nombre2 = 0.0;
         chaine ="";
+        trouver = false;
 
     }
 
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             operateur = "+";
             chaine = "";
             nombre1 = Double.parseDouble(txtResultat.getText().toString());
-
+            trouver = false;
             txtResultat.setText(chaine);
         }
         if (v.equals(btnMoins)) {
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             operateur = "-";
             chaine = "";
             nombre1 = Double.parseDouble(txtResultat.getText().toString());
-
+            trouver = false;
             txtResultat.setText(chaine);
         }
         if (v.equals(btnMulti)) {
@@ -101,13 +103,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             operateur = "*";
             chaine = "";
             nombre1 = Double.parseDouble(txtResultat.getText().toString());
-
+            trouver = false;
             txtResultat.setText(chaine);
         }
         if (v.equals(btnDiv)) {
             Toast.makeText(this, "btnDiv", Toast.LENGTH_LONG).show();
             operateur = "/";
             chaine = "";
+            trouver = false;
             nombre1 = Double.parseDouble(txtResultat.getText().toString());
 
             txtResultat.setText(chaine);
@@ -143,13 +146,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             chaine = "";
             nombre1 = 0.0;
             nombre2 = 0.0;
+            trouver = false;
             txtResultat.setText(chaine);
         }
         if (v.equals(btnPoint)) {
             Toast.makeText(this, "btnPoint", Toast.LENGTH_LONG).show();
-
-            chaine = chaine +".";
-            txtResultat.setText(chaine);
+          if (!trouver) {
+              chaine = chaine + ".";
+              txtResultat.setText(chaine);
+              trouver = true;
+          }
 
         }
 
